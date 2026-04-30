@@ -1,0 +1,71 @@
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora cat</title>
+</head>
+
+<body>
+    <input id="num1" type="number" placeholder="Número 1">
+    <input id="num2" type="number" placeholder="Número 2">
+    <button onclick="calculo(somar)">Somar</button>
+    <button onclick="calculo(subtrair)">subtrair</button>
+    <button onclick="calculo(multiplicar)">multiplicar</button>
+    <button onclick="calculo(dividir)">dividir</button>
+    <button onclick="TESTAR()" >TESTAR</button>
+    <div id="resultado"></div>
+
+</body>
+
+<script>
+       
+    function calculo(operacao){
+        const n1 = parseFloat(document.getElementById("num1").value);
+        const n2 = parseFloat(document.getElementById("num2").value);
+        const mensagem =  document.getElementById ("resultado")
+        mensagem.innerText= `resultado= ${operacao(n1,n2)}`
+    }
+
+
+
+    function somar(n1,n2){
+        return n1 + n2;
+    }
+
+    function subtrair(n1,n2) {
+        return n1 - n2;
+    }
+
+    function multiplicar(n1,n2) {
+       return n1 * n2;
+    }
+ 
+    
+    function dividir(n1,n2) {
+        if (n2 == 0){
+            return "não pode"
+        }
+        else{ 
+            return n1 / n2;
+        }
+    } 
+    function TESTAR(){
+        testar("somar 2 4", somar(2,4), 6)
+        testar("subtrair 6 8", subtrair(6,8),-2)
+        testar("multiplicar 5 7", multiplicar(5,7),35)
+        testar("dividir 5 0", dividir(5,0),"não pode")
+    }
+    function testar(desc, result, esperado){
+    if (result == esperado){
+        console.log (desc)
+    }
+    else{
+        console.log(`${desc} esperado ${esperado} resultado ${result} `)
+    }
+    }
+</script>
+
+
+</html>
